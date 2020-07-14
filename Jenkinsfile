@@ -1,9 +1,5 @@
 pipeline {
-    agent {
-        docker {
-            image 'robotframework/rfdocker'
-        }
-    }
+    agent any
     stages {
         stage('build') {
             steps {
