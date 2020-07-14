@@ -13,6 +13,7 @@ pipeline {
         }
         stage('test') {
             steps {
+                sh "pip3 install robotframework"
                 sh "robot test.robot"
                 step([$class: 'RobotPublisher',
                     disableArchiveOutput: false,
