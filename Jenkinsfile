@@ -12,16 +12,18 @@ pipeline {
             }
         }
         stage('test') {
-            sh "robot test.robot"
-            step([$class: 'RobotPublisher',
-                disableArchiveOutput: false,
-                logFileName: 'log.html',
-                otherFiles: '',
-                outputFileName: 'output.xml',
-                outputPath: '.',
-                passThreshold: 100,
-                reportFileName: 'report.html',
-                unstableThreshold: 0]);
+            steps {
+                sh "robot test.robot"
+                step([$class: 'RobotPublisher',
+                    disableArchiveOutput: false,
+                    logFileName: 'log.html',
+                    otherFiles: '',
+                    outputFileName: 'output.xml',
+                    outputPath: '.',
+                    passThreshold: 100,
+                    reportFileName: 'report.html',
+                    unstableThreshold: 0]);
+            }
         }
     }
 }
